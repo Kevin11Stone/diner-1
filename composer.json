@@ -1,12 +1,15 @@
 {
-  "name": "tostrander/328/diner",
+  "name": "kstone/328/diner-1",
   "authors": [
     {
-      "name": "Tina Ostrander",
-      "email": "tostrander@greenriver.edu"
+      "name": "Kevin Stone",
+      "email": "kstone@greenriver.edu"
     }
   ],
   "require": {
     "bcosca/fatfree-core": "dev-master"
+  },
+  "autoload": {
+    "classmap": ["classes/"]
   }
 }
