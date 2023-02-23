@@ -76,7 +76,7 @@ $f3->route('GET|POST /order1', function($f3) {
 
         //Move food from POST array to SESSION array
         $food = trim($_POST['food']);
-        if (validFood($food)) {
+        if (Validate::validFood($food)) {
             $newOrder->setFood($food);
             //$_SESSION['food'] = $food; we're putting into object now instead of the Session array
         }
@@ -87,7 +87,7 @@ $f3->route('GET|POST /order1', function($f3) {
 
         //Validate the meal
         $meal = $_POST['meal'];
-        if (validMeal($meal)) {
+        if (Validate::validMeal($meal)) {
             $newOrder->setMeal($meal);
             //$_SESSION['meal'] = $meal;
         }
@@ -107,7 +107,7 @@ $f3->route('GET|POST /order1', function($f3) {
     }
 
     //Add meals to F3 hive
-    $f3->set('meals', getMeals());
+    $f3->set('meals', DataLayer::getMeals());
 
     //Instantiate a view
     $view = new Template();
@@ -133,7 +133,7 @@ $f3->route('GET|POST /order2', function($f3) {
     }
 
     //Add condiments to the hive
-    $f3->set('condiments', getCondiments());
+    $f3->set('condiments', DataLayer::getCondiments());
 
     //Instantiate a view
     $view = new Template();
