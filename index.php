@@ -143,11 +143,16 @@ $f3->route('GET|POST /order2', function($f3) {
 
 //Define a summary route (328/diner/summary)
 $f3->route('GET /summary', function() {
-    echo var_dump($_POST);
+    //echo var_dump($_POST);
+
+    // write to database here
 
     //Instantiate a view
     $view = new Template();
     echo $view->render("views/order-summary.html");
+
+    // destroy Session array
+    session_destroy();
 
 });
 
