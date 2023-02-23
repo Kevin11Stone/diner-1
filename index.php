@@ -14,8 +14,8 @@ error_reporting(E_ALL);
 
 //Require files
 require_once('vendor/autoload.php');
-require_once('model/data-layer.php');
-require_once('model/validate.php');
+//require_once('model/data-layer.php');
+//require_once('model/validate.php');
 //require_once('classes/order.php');
 
 //Start a session, must start Session after requiring auto-load files
@@ -42,12 +42,18 @@ echo validFood($food3) ? "valid" : "not valid";
 //Instantiate F3 Base class
 $f3 = Base::instance();
 
+//instantiate a Controller object
+$con = new Controller($f3);
+
 //Define a default route (328/diner)
 $f3->route('GET /', function() {
 
-    //Instantiate a view
-    $view = new Template();
-    echo $view->render("views/diner-home.html");
+    // use Controller class here
+    $GLOBALS['con']->home();
+
+//    //Instantiate a view
+//    $view = new Template();
+//    echo $view->render("views/diner-home.html");
 
 });
 
