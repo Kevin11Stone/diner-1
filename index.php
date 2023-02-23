@@ -16,6 +16,16 @@ session_start();
 require_once('vendor/autoload.php');
 require_once('model/data-layer.php');
 require_once('model/validate.php');
+//require_once('classes/order.php');
+
+// class test code
+$myOrder = new Order();
+$myOrder->setFood("tacos");
+$myOrder->setMeal("salsa");
+$myOrder->setCondiments("taquitos");
+
+var_dump($myOrder);
+
 /*
 $food1 = "tacos";
 $food2 = "        ";
@@ -81,7 +91,7 @@ $f3->route('GET|POST /order1', function($f3) {
         //Redirect to summary page
         //if there are no errors
         if (empty($f3->get('errors'))) {
-            $f3->reroute('order2');
+            $f3->reroute('summary');
         }
     }
 
@@ -118,6 +128,7 @@ $f3->route('GET|POST /order2', function($f3) {
 
 //Define a summary route (328/diner/summary)
 $f3->route('GET /summary', function() {
+    echo var_dump($_POST);
 
     //Instantiate a view
     $view = new Template();
